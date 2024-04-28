@@ -111,7 +111,7 @@ namespace WebStoreMVC.Controllers
                 newFileName += Path.GetExtension(productDto.ImageFile.FileName);
 
                 string imageFullPath = Path.Combine(environment.WebRootPath, "products", newFileName); // Combine paths using Path.Combine
-                using (var stream = new FileStream(imageFullPath, FileMode.Create)) // Use FileStream instead of File.Create
+                using (var stream = System.IO.File.Create(imageFullPath)) 
                 {
                     productDto.ImageFile.CopyTo(stream);
                 }
